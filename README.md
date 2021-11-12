@@ -1,4 +1,4 @@
-# SynconextAssignmentApp
+# angular12Tailwind
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
 
@@ -41,10 +41,10 @@ Step 1: Download and install nodeJs and set the path in envirnement => https://n
 
 Step 2: Install Anglar Cli by running the command => npm install -g @angular/cli 
 
-Step 3: Now extract the Zip file provided in the working directory => example: synconextAssignmentApp
+Step 3: Now extract the Zip file provided in the working directory => example: angular12Tailwind
 
 Step 4: Now open the project in VSCode and run the command ==> npm install
-    - Note you sould be in the main project folder ==> synconextAssignmentApp
+    - Note you sould be in the main project folder ==> angular12Tailwind
     - npm insall will isnstall all relavent and needful packages which are being used by the application.
 
 Step 5: Once installation is done run the command: npm start
@@ -60,7 +60,7 @@ Step 5: Once installation is done run the command: npm start
 - User can give ratings to the building and filter all the buildings based on the ratings.
 - If user changes the menu or refreshes the page, rating data will get vanished.
 
-## Get SynconextAssignmentApp From git
+## Get angular12Tailwind From git
 - Make sure git is installed in your machine
 - Just run command ==> git clone https://github.com/mca27/synconext-building-assignment.git  
 - Run ==> get fetch origin ==> This will list all the branches  

@@ -20,10 +20,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'synconextAssignmentApp'`, () => {
+  it(`should have as title 'angular12Tailwind'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('synconextAssignmentApp');
+    expect(app.title).toEqual('angular12Tailwind');
   });
 
   it('should render title', () => {
@@ -31,7 +31,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'synconextAssignmentApp app is running!'
+      'angular12Tailwind app is running!'
     );
   });
 });

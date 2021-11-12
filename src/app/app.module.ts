@@ -13,7 +13,6 @@ import { AboutComponent } from './about/about.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { BuildingsComponent } from './buildings/buildings.component';
 import {
   BuildingFilterPipe,
   CityFilterPipe,
@@ -26,7 +25,6 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    BuildingsComponent,
     CityFilterPipe,
     StateFilterPipe,
     RateFilterPipe,

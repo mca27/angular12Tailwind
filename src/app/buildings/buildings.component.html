@@ -1,0 +1,114 @@
+<div *ngIf="load" class="loaderAlign">
+  <div class="loader"></div>
+  <p>Data is loading please wait....</p>
+</div>
+<div *ngIf="!load" name="filters">
+  <input
+    type="text"
+    placeholder="Serch by Building"
+    name="buildingFilter"
+    id="buildingFilter"
+    [formControl]="buildingFilter"
+  />
+  <input
+    type="text"
+    placeholder="Serch by City"
+    name="cityFilter"
+    id="cityFilter"
+    [formControl]="cityFilter"
+  />
+  <input
+    type="text"
+    placeholder="Serch by State"
+    name="stateFilter"
+    id="stateFilter"
+    [formControl]="stateFilter"
+  />
+  <select
+    class="rating"
+    [formControl]="ratingFilter"
+    name="ratingFilter"
+    id="ratingFilter"
+    placeholder="Filter By building rating"
+  >
+    <option [value]="" disabled selected>Filter by ratings</option>
+    <option *ngFor="let rating of ratings" [value]="rating">
+      {{ rating }}
+    </option>
+  </select>
+  <button class="clearFilter" (click)="resetFilters()">Clear Filters</button>
+</div>
+<div
+  *ngIf="buildingData
+      | cityFilter: { city: cityFilter.value }
+      | buildingFilter: { building: buildingFilter.value }
+      | stateFilter: { state: stateFilter.value }
+      | rateFilter: { rating: ratingFilter.value } as buldingresult">
+  <table *ngIf="!load && buildingData.length > 0">
+    <thead>
+      <th>Building</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Rate Building</th>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let building of buldingresult
+            | paginate
+              : {
+                  itemsPerPage: pageSize,
+                  currentPage: page,
+                  totalItems: buldingresult.length
+                }
+        "
+      >
+        <td *ngIf="!building">No data Found</td>
+        <td>{{ building.building }}</td>
+        <td>{{ building.city }}</td>
+        <td>{{ building.state }}</td>
+        <td>
+          {{ building.rating || 1 }}
+          <button
+            *ngIf="!building.showRating"
+            (click)="getRatingsDropdwon(building.id)"
+            name="rate"
+            class="rate"
+          >
+            Rate
+          </button>
+          <select
+            *ngIf="building.showRating"
+            (change)="applyRatingValue(building.id)"
+            [formControl]="buldingRating"
+            name="buldingRating"
+            id="buldingRating"
+          >
+            <option *ngFor="let rating of ratings" [value]="rating">
+              {{ rating }}
+            </option></select
+          ><label
+            *ngIf="building.showRating"
+            (click)="closeRatingDropDwon(building.id)"
+            class="close"
+            >X</label
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="centerAlign" *ngIf="!load && buldingresult.length == 0">
+    <h2>Building Data not found</h2>
+  </div>
+  <div class="centerAlign" *ngIf="errorMessage">
+    <h2>{{ errorMessage }}</h2>
+  </div>
+  <div class="paginator" *ngIf="!load && buldingresult.length > 0">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      [responsive]="true"
+      (pageChange)="handlePageChange($event)"
+    ></pagination-controls>
+  </div>
+</div>

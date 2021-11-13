@@ -11,10 +11,16 @@ export class HeaderComponent implements OnInit {
     translateService.addLangs(['en', 'in']);
     translateService.setDefaultLang('en');
   }
+
+  ngOnInit(): void {}
+
   translateSite(langauge: string) {
     console.log(langauge);
     this.translateService.use(langauge);
   }
 
-  ngOnInit(): void {}
+  showMenu = false;
+  toggleNavbar(){
+    this.showMenu = !this.showMenu;
+  }
 }
